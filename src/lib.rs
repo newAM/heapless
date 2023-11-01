@@ -118,7 +118,7 @@ mod defmt;
     all(not(feature = "mpmc_large"), target_has_atomic = "8")
 ))]
 pub mod mpmc;
-#[cfg(any(arm_llsc, target_arch = "x86"))]
+#[cfg(any(arm_llsc, target_arch = "x86", target_arch = "x86_64"))]
 pub mod pool;
 pub mod sorted_linked_list;
 #[cfg(any(
