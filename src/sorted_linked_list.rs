@@ -480,14 +480,14 @@ where
     /// use heapless::sorted_linked_list::{SortedLinkedList, Max};
     /// let mut ll: SortedLinkedList<_, _, Max, 3> = SortedLinkedList::new_usize();
     ///
-    /// assert_eq!(ll.is_full(), false);
+    /// assert!(!ll.is_full());
     ///
     /// ll.push(1).unwrap();
-    /// assert_eq!(ll.is_full(), false);
+    /// assert!(!ll.is_full());
     /// ll.push(2).unwrap();
-    /// assert_eq!(ll.is_full(), false);
+    /// assert!(!ll.is_full());
     /// ll.push(3).unwrap();
-    /// assert_eq!(ll.is_full(), true);
+    /// assert!(ll.is_full());
     /// ```
     #[inline]
     pub fn is_full(&self) -> bool {
@@ -502,10 +502,10 @@ where
     /// use heapless::sorted_linked_list::{SortedLinkedList, Max};
     /// let mut ll: SortedLinkedList<_, _, Max, 3> = SortedLinkedList::new_usize();
     ///
-    /// assert_eq!(ll.is_empty(), true);
+    /// assert!(ll.is_empty());
     ///
     /// ll.push(1).unwrap();
-    /// assert_eq!(ll.is_empty(), false);
+    /// assert!(!ll.is_empty());
     /// ```
     #[inline]
     pub fn is_empty(&self) -> bool {

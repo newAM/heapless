@@ -828,8 +828,8 @@ where
     ///
     /// let mut map = FnvIndexMap::<_, _, 8>::new();
     /// map.insert(1, "a").unwrap();
-    /// assert_eq!(map.contains_key(&1), true);
-    /// assert_eq!(map.contains_key(&2), false);
+    /// assert!(map.contains_key(&1));
+    /// assert!(!map.contains_key(&2));
     /// ```
     pub fn contains_key<Q>(&self, key: &Q) -> bool
     where
@@ -891,7 +891,7 @@ where
     ///
     /// let mut map = FnvIndexMap::<_, _, 8>::new();
     /// assert_eq!(map.insert(37, "a"), Ok(None));
-    /// assert_eq!(map.is_empty(), false);
+    /// assert!(!map.is_empty());
     ///
     /// map.insert(37, "b");
     /// assert_eq!(map.insert(37, "c"), Ok(Some("b")));

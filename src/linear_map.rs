@@ -77,8 +77,8 @@ where
     ///
     /// let mut map: LinearMap<_, _, 8> = LinearMap::new();
     /// map.insert(1, "a").unwrap();
-    /// assert_eq!(map.contains_key(&1), true);
-    /// assert_eq!(map.contains_key(&2), false);
+    /// assert!(map.contains_key(&1));
+    /// assert!(!map.contains_key(&2));
     /// ```
     pub fn contains_key(&self, key: &K) -> bool {
         self.get(key).is_some()
@@ -167,7 +167,7 @@ where
     ///
     /// let mut map: LinearMap<_, _, 8> = LinearMap::new();
     /// assert_eq!(map.insert(37, "a").unwrap(), None);
-    /// assert_eq!(map.is_empty(), false);
+    /// assert!(!map.is_empty());
     ///
     /// map.insert(37, "b").unwrap();
     /// assert_eq!(map.insert(37, "c").unwrap(), Some("b"));

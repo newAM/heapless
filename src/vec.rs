@@ -529,9 +529,9 @@ impl<T, const N: usize> Vec<T, N> {
     /// use heapless::Vec;
     ///
     /// let v: Vec<_, 8> = Vec::from_slice(b"abc").unwrap();
-    /// assert_eq!(v.starts_with(b""), true);
-    /// assert_eq!(v.starts_with(b"ab"), true);
-    /// assert_eq!(v.starts_with(b"bc"), false);
+    /// assert!(v.starts_with(b""));
+    /// assert!(v.starts_with(b"ab"));
+    /// assert!(!v.starts_with(b"bc"));
     /// ```
     #[inline]
     pub fn starts_with(&self, needle: &[T]) -> bool
@@ -552,9 +552,9 @@ impl<T, const N: usize> Vec<T, N> {
     /// use heapless::Vec;
     ///
     /// let v: Vec<_, 8> = Vec::from_slice(b"abc").unwrap();
-    /// assert_eq!(v.ends_with(b""), true);
-    /// assert_eq!(v.ends_with(b"ab"), false);
-    /// assert_eq!(v.ends_with(b"bc"), true);
+    /// assert!(v.ends_with(b""));
+    /// assert!(!v.ends_with(b"ab"));
+    /// assert!(v.ends_with(b"bc"));
     /// ```
     #[inline]
     pub fn ends_with(&self, needle: &[T]) -> bool

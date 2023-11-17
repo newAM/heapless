@@ -338,8 +338,8 @@ where
     /// use heapless::FnvIndexSet;
     ///
     /// let set: FnvIndexSet<_, 16> = [1, 2, 3].iter().cloned().collect();
-    /// assert_eq!(set.contains(&1), true);
-    /// assert_eq!(set.contains(&4), false);
+    /// assert!(set.contains(&1));
+    /// assert!(!set.contains(&4));
     /// ```
     pub fn contains<Q>(&self, value: &Q) -> bool
     where
@@ -360,11 +360,11 @@ where
     /// let a: FnvIndexSet<_, 16> = [1, 2, 3].iter().cloned().collect();
     /// let mut b = FnvIndexSet::<_, 16>::new();
     ///
-    /// assert_eq!(a.is_disjoint(&b), true);
+    /// assert!(a.is_disjoint(&b));
     /// b.insert(4).unwrap();
-    /// assert_eq!(a.is_disjoint(&b), true);
+    /// assert!(a.is_disjoint(&b));
     /// b.insert(1).unwrap();
-    /// assert_eq!(a.is_disjoint(&b), false);
+    /// assert!(!a.is_disjoint(&b));
     /// ```
     pub fn is_disjoint<S2, const N2: usize>(&self, other: &IndexSet<T, S2, N2>) -> bool
     where
@@ -384,11 +384,11 @@ where
     /// let sup: FnvIndexSet<_, 16> = [1, 2, 3].iter().cloned().collect();
     /// let mut set = FnvIndexSet::<_, 16>::new();
     ///
-    /// assert_eq!(set.is_subset(&sup), true);
+    /// assert!(set.is_subset(&sup));
     /// set.insert(2).unwrap();
-    /// assert_eq!(set.is_subset(&sup), true);
+    /// assert!(set.is_subset(&sup));
     /// set.insert(4).unwrap();
-    /// assert_eq!(set.is_subset(&sup), false);
+    /// assert!(!set.is_subset(&sup));
     /// ```
     pub fn is_subset<S2, const N2: usize>(&self, other: &IndexSet<T, S2, N2>) -> bool
     where
@@ -408,14 +408,14 @@ where
     /// let sub: FnvIndexSet<_, 16> = [1, 2].iter().cloned().collect();
     /// let mut set = FnvIndexSet::<_, 16>::new();
     ///
-    /// assert_eq!(set.is_superset(&sub), false);
+    /// assert!(!set.is_superset(&sub));
     ///
     /// set.insert(0).unwrap();
     /// set.insert(1).unwrap();
-    /// assert_eq!(set.is_superset(&sub), false);
+    /// assert!(!set.is_superset(&sub));
     ///
     /// set.insert(2).unwrap();
-    /// assert_eq!(set.is_superset(&sub), true);
+    /// assert!(set.is_superset(&sub));
     /// ```
     pub fn is_superset<S2, const N2: usize>(&self, other: &IndexSet<T, S2, N2>) -> bool
     where
@@ -437,8 +437,8 @@ where
     ///
     /// let mut set = FnvIndexSet::<_, 16>::new();
     ///
-    /// assert_eq!(set.insert(2).unwrap(), true);
-    /// assert_eq!(set.insert(2).unwrap(), false);
+    /// assert!(set.insert(2).unwrap());
+    /// assert!(!set.insert(2).unwrap());
     /// assert_eq!(set.len(), 1);
     /// ```
     pub fn insert(&mut self, value: T) -> Result<bool, T> {
@@ -461,8 +461,8 @@ where
     /// let mut set = FnvIndexSet::<_, 16>::new();
     ///
     /// set.insert(2).unwrap();
-    /// assert_eq!(set.remove(&2), true);
-    /// assert_eq!(set.remove(&2), false);
+    /// assert!(set.remove(&2));
+    /// assert!(!set.remove(&2));
     /// ```
     pub fn remove<Q>(&mut self, value: &Q) -> bool
     where
