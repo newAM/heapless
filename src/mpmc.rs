@@ -154,9 +154,12 @@ impl<T, const N: usize> MpMcQueue<T, N> {
     /// Creates an empty queue
     pub const fn new() -> Self {
         const {
-            assert!(N > 1);
-            assert!(N.is_power_of_two());
-            assert!(N < UintSize::MAX as usize);
+            assert!(N > 1, "MpMcQueue size must be greater than 1");
+            assert!(N.is_power_of_two(), "MpMcQueue size must be a power of 2");
+            assert!(
+                N < UintSize::MAX as usize,
+                "MpMcQueue size must less than the index maximum"
+            );
         }
 
         let mut cell_count = 0;

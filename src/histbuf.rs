@@ -208,9 +208,7 @@ impl<T, const N: usize> HistoryBuffer<T, N> {
     /// ```
     #[inline]
     pub const fn new() -> Self {
-        const {
-            assert!(N > 0);
-        }
+        const { assert!(N > 0, "HistoryBuffer must have a non-zero size") };
 
         Self {
             phantom: PhantomData,

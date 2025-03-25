@@ -152,9 +152,7 @@ impl<T, const N: usize> Deque<T, N> {
     /// static mut X: Deque<u8, 16> = Deque::new();
     /// ```
     pub const fn new() -> Self {
-        const {
-            assert!(N > 0);
-        }
+        const { assert!(N > 0, "Deque must have a non-zero size") };
 
         Self {
             phantom: PhantomData,

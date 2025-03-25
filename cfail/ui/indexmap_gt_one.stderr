@@ -1,0 +1,22 @@
+error[E0080]: evaluation of `heapless::IndexMap::<u8, u8, hash32::BuildHasherDefault<hash32::fnv::Hasher>, 1>::new::{constant#0}` failed
+ --> $HEAPLESS/src/indexmap.rs
+  |
+  |             assert!(N > 1, "IndexMap size must be greater than 1");
+  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the evaluated program panicked at 'IndexMap size must be greater than 1', /home/alex/git/heapless/src/indexmap.rs:733:13
+  |
+  = note: this error originates in the macro `$crate::panic::panic_2021` which comes from the expansion of the macro `assert` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+note: erroneous constant encountered
+   --> $HEAPLESS/src/indexmap.rs
+    |
+    | /         const {
+    | |             assert!(N > 1, "IndexMap size must be greater than 1");
+    | |             assert!(N.is_power_of_two(), "IndexMap size must be a power of two");
+    | |         }
+    | |_________^
+
+note: the above error was encountered while instantiating `fn heapless::IndexMap::<u8, u8, hash32::BuildHasherDefault<hash32::fnv::Hasher>, 1>::new`
+ --> ui/indexmap_gt_one.rs:2:13
+  |
+2 |     let _ = heapless::FnvIndexMap::<u8, u8, 1>::new();
+  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

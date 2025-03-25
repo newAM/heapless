@@ -212,7 +212,10 @@ impl<T, const N: usize> Vec<T, N> {
     /// vector a compile-time error will be produced.
     pub fn from_array<const M: usize>(src: [T; M]) -> Self {
         const {
-            assert!(N >= M);
+            assert!(
+                N >= M,
+                "Vec size must be greater than or equal to array size"
+            );
         }
 
         // We've got to copy `src`, but we're functionally moving it. Don't run

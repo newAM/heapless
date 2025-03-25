@@ -238,7 +238,10 @@ macro_rules! impl_index_and_const_new {
             /// Create a new linked list.
             pub const fn $new_name() -> Self {
                 const {
-                    assert!(N < $max_val);
+                    assert!(
+                        N < $max_val,
+                        "SortedLinkedList size must be less than the index maximum"
+                    );
                 }
 
                 let mut list = SortedLinkedList {

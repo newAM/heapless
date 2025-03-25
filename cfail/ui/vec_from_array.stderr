@@ -1,0 +1,27 @@
+error[E0080]: evaluation of `heapless::vec::VecInner::<u8, heapless::vec::storage::VecStorageInner<[std::mem::MaybeUninit<u8>; 4]>>::from_array::<5>::{constant#1}` failed
+ --> $HEAPLESS/src/vec/mod.rs
+  |
+  | /             assert!(
+  | |                 N >= M,
+  | |                 "Vec size must be greater than or equal to array size"
+  | |             );
+  | |_____________^ the evaluated program panicked at 'Vec size must be greater than or equal to array size', /home/alex/git/heapless/src/vec/mod.rs:216:13
+  |
+  = note: this error originates in the macro `$crate::panic::panic_2021` which comes from the expansion of the macro `assert` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+note: erroneous constant encountered
+   --> $HEAPLESS/src/vec/mod.rs
+    |
+    | /         const {
+    | |             assert!(
+    | |                 N >= M,
+    | |                 "Vec size must be greater than or equal to array size"
+    | |             );
+    | |         }
+    | |_________^
+
+note: the above error was encountered while instantiating `fn heapless::vec::VecInner::<u8, heapless::vec::storage::VecStorageInner<[std::mem::MaybeUninit<u8>; 4]>>::from_array::<5>`
+ --> ui/vec_from_array.rs:4:5
+  |
+4 |     Vec::<u8, 4>::from_array([0; 5]);
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

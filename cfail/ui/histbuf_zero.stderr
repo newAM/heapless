@@ -1,0 +1,19 @@
+error[E0080]: evaluation of `heapless::histbuf::HistoryBufferInner::<u8, heapless::histbuf::storage::HistBufStorageInner<[std::mem::MaybeUninit<u8>; 0]>>::new::{constant#0}` failed
+ --> $HEAPLESS/src/histbuf.rs
+  |
+  |         const { assert!(N > 0, "HistoryBuffer must have a non-zero size") };
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the evaluated program panicked at 'HistoryBuffer must have a non-zero size', /home/alex/git/heapless/src/histbuf.rs:211:17
+  |
+  = note: this error originates in the macro `$crate::panic::panic_2021` which comes from the expansion of the macro `assert` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+note: erroneous constant encountered
+   --> $HEAPLESS/src/histbuf.rs
+    |
+    |         const { assert!(N > 0, "HistoryBuffer must have a non-zero size") };
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: the above error was encountered while instantiating `fn heapless::histbuf::HistoryBufferInner::<u8, heapless::histbuf::storage::HistBufStorageInner<[std::mem::MaybeUninit<u8>; 0]>>::new`
+ --> ui/histbuf_zero.rs:4:35
+  |
+4 |     let _: HistoryBuffer<u8, 0> = HistoryBuffer::new();
+  |                                   ^^^^^^^^^^^^^^^^^^^^

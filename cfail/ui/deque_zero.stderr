@@ -1,0 +1,19 @@
+error[E0080]: evaluation of `heapless::deque::DequeInner::<u8, heapless::vec::storage::VecStorageInner<[std::mem::MaybeUninit<u8>; 0]>>::new::{constant#0}` failed
+ --> $HEAPLESS/src/deque.rs
+  |
+  |         const { assert!(N > 0, "Deque must have a non-zero size") };
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the evaluated program panicked at 'Deque must have a non-zero size', /home/alex/git/heapless/src/deque.rs:155:17
+  |
+  = note: this error originates in the macro `$crate::panic::panic_2021` which comes from the expansion of the macro `assert` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+note: erroneous constant encountered
+   --> $HEAPLESS/src/deque.rs
+    |
+    |         const { assert!(N > 0, "Deque must have a non-zero size") };
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: the above error was encountered while instantiating `fn heapless::deque::DequeInner::<u8, heapless::vec::storage::VecStorageInner<[std::mem::MaybeUninit<u8>; 0]>>::new`
+ --> ui/deque_zero.rs:4:27
+  |
+4 |     let _: Deque<u8, 0> = Deque::new();
+  |                           ^^^^^^^^^^^^

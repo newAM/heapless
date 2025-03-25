@@ -730,8 +730,8 @@ impl<K, V, S, const N: usize> IndexMap<K, V, BuildHasherDefault<S>, N> {
     /// Creates an empty `IndexMap`.
     pub const fn new() -> Self {
         const {
-            assert!(N > 1);
-            assert!(N.is_power_of_two());
+            assert!(N > 1, "IndexMap size must be greater than 1");
+            assert!(N.is_power_of_two(), "IndexMap size must be a power of two");
         }
 
         Self {
